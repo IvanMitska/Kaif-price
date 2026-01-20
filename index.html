@@ -523,6 +523,217 @@
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-soft);
         }
+
+        /* Schedule Tables */
+        .schedule-wrapper {
+            margin-top: 35px;
+        }
+
+        .schedule-block {
+            margin-bottom: 50px;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .schedule-block::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .schedule-block::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 3px;
+        }
+
+        .schedule-block::-webkit-scrollbar-thumb {
+            background: #ccc;
+            border-radius: 3px;
+        }
+
+        .schedule-inner {
+            min-width: 600px;
+        }
+
+        .schedule-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 30px;
+            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+            color: white;
+        }
+
+        .schedule-header.purple {
+            background: linear-gradient(135deg, #9333ea, #7c3aed);
+        }
+
+        .schedule-header.brown {
+            background: linear-gradient(135deg, #b45309, #d97706);
+        }
+
+        .schedule-header h3 {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .schedule-header span {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-align: right;
+            line-height: 1.5;
+            opacity: 0.9;
+        }
+
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .schedule-table th {
+            padding: 18px 12px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-secondary);
+            border-bottom: 2px solid #e0e0e0;
+            border-right: 1px solid #e5e5e5;
+            background: #f5f5f5;
+        }
+
+        .schedule-table th:first-child {
+            width: 70px;
+            border-right: 1px solid #e0e0e0;
+        }
+
+        .schedule-table th:last-child {
+            border-right: none;
+        }
+
+        .schedule-table td {
+            padding: 18px 10px;
+            font-size: 13px;
+            font-weight: 600;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+            border-right: 1px solid #eee;
+            vertical-align: middle;
+            background: white;
+            transition: background 0.2s;
+        }
+
+        .schedule-table td:last-child {
+            border-right: none;
+        }
+
+        .schedule-table tr:hover td {
+            background: #fafafa;
+        }
+
+        .schedule-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .schedule-table .time-cell {
+            font-weight: 800;
+            font-size: 14px;
+            color: #9333ea;
+            background: rgba(147, 51, 234, 0.08);
+            border-right: 1px solid #e0e0e0;
+        }
+
+        .schedule-table.fight .time-cell {
+            color: #b45309;
+            background: rgba(180, 83, 9, 0.08);
+            border-right: 1px solid #e0e0e0;
+        }
+
+        .schedule-table tr:hover .time-cell {
+            background: rgba(147, 51, 234, 0.1);
+        }
+
+        .schedule-table.fight tr:hover .time-cell {
+            background: rgba(180, 83, 9, 0.1);
+        }
+
+        .schedule-table .class-cell {
+            color: var(--text-primary);
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .schedule-table .class-cell sub {
+            font-size: 9px;
+            text-transform: lowercase;
+            color: var(--text-secondary);
+            margin-left: 1px;
+        }
+
+        @media (max-width: 500px) {
+            .schedule-header {
+                padding: 20px 20px;
+            }
+
+            .schedule-header h3 {
+                font-size: 18px;
+                letter-spacing: 2px;
+            }
+
+            .schedule-table th {
+                padding: 14px 6px;
+                font-size: 10px;
+            }
+
+            .schedule-table td {
+                padding: 14px 6px;
+                font-size: 11px;
+            }
+
+            .schedule-table .time-cell {
+                font-size: 12px;
+            }
+
+            .schedule-table .class-cell {
+                font-size: 10px;
+            }
+        }
+
+        /* Language Switcher */
+        .lang-switcher {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 30px;
+        }
+
+        .lang-btn {
+            padding: 10px 18px;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            background: white;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .lang-btn:hover {
+            border-color: #999;
+        }
+
+        .lang-btn.active {
+            background: var(--text-primary);
+            color: white;
+            border-color: var(--text-primary);
+        }
     </style>
 </head>
 <body>
@@ -532,36 +743,61 @@
             <div class="logo">
                 <img src="logo-header.png" alt="KAIF">
             </div>
-            <p class="tagline">Wellness & Fitness Complex</p>
+            <p class="tagline" data-i18n="tagline">Wellness & Fitness Complex</p>
         </header>
+
+        <!-- Language Switcher -->
+        <div class="lang-switcher">
+            <button class="lang-btn active" onclick="setLanguage('en')">EN</button>
+            <button class="lang-btn" onclick="setLanguage('ru')">RU</button>
+            <button class="lang-btn" onclick="setLanguage('th')">TH</button>
+        </div>
 
         <!-- Navigation -->
         <nav class="quick-nav">
-            <a href="#memberships">Memberships</a>
-            <a href="#training">Training</a>
-            <a href="#group">Group Classes</a>
-            <a href="#spa">SPA & Steam</a>
-            <a href="#menu">Restaurant</a>
+            <a href="#menu" data-i18n="nav.restaurant">Restaurant</a>
+            <a href="#daypass" data-i18n="nav.daypass">Day Pass</a>
+            <a href="#memberships" data-i18n="nav.memberships">Memberships</a>
+            <a href="#training" data-i18n="nav.training">Training</a>
+            <a href="#group" data-i18n="nav.group">Group Classes</a>
+            <a href="#spa" data-i18n="nav.spa">SPA & Steam</a>
+            <a href="#schedule" data-i18n="nav.schedule">Schedule</a>
         </nav>
 
         <!-- Restaurant & Bar Section -->
         <section id="menu">
             <div class="section-header first">
-                <h2>Restaurant & Bar</h2>
+                <h2 data-i18n="restaurant.title">Restaurant & Bar</h2>
             </div>
 
             <div class="menu-grid">
                 <a href="#" class="menu-card" onclick="openPDF('fiels/меню.pdf'); return false;">
                     <span class="icon">🍽️</span>
-                    <h4>Restaurant Menu</h4>
-                    <p>View our food menu</p>
+                    <h4 data-i18n="restaurant.menu">Restaurant Menu</h4>
+                    <p data-i18n="restaurant.menuDesc">View our food menu</p>
                 </a>
 
                 <a href="#" class="menu-card" onclick="openPDF('fiels/Барное_цены (1).pdf'); return false;">
                     <span class="icon">🍸</span>
-                    <h4>Bar Menu</h4>
-                    <p>View our drinks menu</p>
+                    <h4 data-i18n="restaurant.bar">Bar Menu</h4>
+                    <p data-i18n="restaurant.barDesc">View our drinks menu</p>
                 </a>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- Day Pass Section -->
+        <section id="daypass">
+            <div class="section-header">
+                <h2 data-i18n="daypass.title">Day Pass</h2>
+            </div>
+
+            <div class="price-table">
+                <div class="price-row">
+                    <div class="price-label"><span data-i18n="daypass.fullday">Full Day</span><small data-i18n="daypass.includes">Gym, Pool, Hammam, Sauna, Ice Barrel, Towels</small></div>
+                    <div class="price-value" style="background: linear-gradient(135deg, #06b6d4, #8b5cf6);">590</div>
+                </div>
             </div>
         </section>
 
@@ -570,7 +806,7 @@
         <!-- Memberships Section -->
         <section id="memberships">
             <div class="section-header">
-                <h2>Club Memberships</h2>
+                <h2 data-i18n="memberships.title">Club Memberships</h2>
             </div>
 
             <div class="circle-nav">
@@ -581,27 +817,27 @@
             <div class="info-cards">
                 <div class="info-card green">
                     <span class="badge green">Club Access</span>
-                    <h4>Include:</h4>
+                    <h4 data-i18n="memberships.include">Include:</h4>
                     <ul>
-                        <li>Gym and Cardio Room</li>
-                        <li>Swimming Pool</li>
-                        <li>Steam Room</li>
-                        <li>Ice Barrel</li>
+                        <li data-i18n="memberships.gym">Gym and Cardio Room</li>
+                        <li data-i18n="memberships.pool">Swimming Pool</li>
+                        <li data-i18n="memberships.steam">Steam Room</li>
+                        <li data-i18n="memberships.ice">Ice Barrel</li>
                     </ul>
                 </div>
 
                 <div class="info-card black">
                     <span class="badge black">Club Access+</span>
-                    <h4>Include:</h4>
+                    <h4 data-i18n="memberships.include">Include:</h4>
                     <ul>
-                        <li>Gym and Cardio Room</li>
-                        <li>Swimming Pool</li>
-                        <li>Steam Room</li>
-                        <li>Ice Barrel</li>
-                        <li>Russian Sauna</li>
-                        <li>Collective Steaming</li>
-                        <li>Japanese Pool</li>
-                        <li>Aroma Ice Barrel</li>
+                        <li data-i18n="memberships.gym">Gym and Cardio Room</li>
+                        <li data-i18n="memberships.pool">Swimming Pool</li>
+                        <li data-i18n="memberships.steam">Steam Room</li>
+                        <li data-i18n="memberships.ice">Ice Barrel</li>
+                        <li data-i18n="memberships.sauna">Russian Sauna</li>
+                        <li data-i18n="memberships.collective">Collective Steaming</li>
+                        <li data-i18n="memberships.japanese">Japanese Pool</li>
+                        <li data-i18n="memberships.aroma">Aroma Ice Barrel</li>
                     </ul>
                 </div>
             </div>
@@ -612,19 +848,19 @@
             </div>
             <div class="price-table">
                 <div class="price-row">
-                    <div class="price-label">1 Month</div>
+                    <div class="price-label" data-i18n="time.1month">1 Month</div>
                     <div class="price-value green">2 000</div>
                 </div>
                 <div class="price-row">
-                    <div class="price-label">3 Months<small>1 freezing week</small></div>
+                    <div class="price-label"><span data-i18n="time.3months">3 Months</span><small data-i18n="freeze.1week">1 freezing week</small></div>
                     <div class="price-value green">4 800</div>
                 </div>
                 <div class="price-row">
-                    <div class="price-label">6 Months<small>2 freezing weeks</small></div>
+                    <div class="price-label"><span data-i18n="time.6months">6 Months</span><small data-i18n="freeze.2weeks">2 freezing weeks</small></div>
                     <div class="price-value green">9 900</div>
                 </div>
                 <div class="price-row">
-                    <div class="price-label">12 Months<small>1 month freezing</small></div>
+                    <div class="price-label"><span data-i18n="time.12months">12 Months</span><small data-i18n="freeze.1month">1 month freezing</small></div>
                     <div class="price-value green">18 000</div>
                 </div>
             </div>
@@ -635,27 +871,27 @@
             </div>
             <div class="price-table">
                 <div class="price-row">
-                    <div class="price-label">1 Month</div>
+                    <div class="price-label" data-i18n="time.1month">1 Month</div>
                     <div class="price-value black">3 800</div>
                 </div>
                 <div class="price-row">
-                    <div class="price-label">3 Months<small>1 freezing week</small></div>
+                    <div class="price-label"><span data-i18n="time.3months">3 Months</span><small data-i18n="freeze.1week">1 freezing week</small></div>
                     <div class="price-value black">9 400</div>
                 </div>
                 <div class="price-row">
-                    <div class="price-label">6 Months<small>2 freezing weeks</small></div>
+                    <div class="price-label"><span data-i18n="time.6months">6 Months</span><small data-i18n="freeze.2weeks">2 freezing weeks</small></div>
                     <div class="price-value black">17 800</div>
                 </div>
                 <div class="price-row">
-                    <div class="price-label">12 Months<small>1 month freezing</small></div>
+                    <div class="price-label"><span data-i18n="time.12months">12 Months</span><small data-i18n="freeze.1month">1 month freezing</small></div>
                     <div class="price-value black">29 000</div>
                 </div>
             </div>
 
             <!-- Family Access -->
             <div class="section-header">
-                <h2>1+1 Family Access</h2>
-                <p>When you purchase a membership for yourself, you can get a special rate for your child</p>
+                <h2 data-i18n="family.title">1+1 Family Access</h2>
+                <p data-i18n="family.desc">When you purchase a membership for yourself, you can get a special rate for your child</p>
             </div>
 
             <div class="section-header">
@@ -663,11 +899,11 @@
             </div>
             <div class="price-table">
                 <div class="price-row">
-                    <div class="price-label">1 Month Adult</div>
+                    <div class="price-label" data-i18n="family.adult">1 Month Adult</div>
                     <div class="price-value green">2 000</div>
                 </div>
                 <div class="price-row">
-                    <div class="price-label">1 Month Child</div>
+                    <div class="price-label" data-i18n="family.child">1 Month Child</div>
                     <div class="price-value green">1 200</div>
                 </div>
             </div>
@@ -677,11 +913,11 @@
             </div>
             <div class="price-table">
                 <div class="price-row">
-                    <div class="price-label">1 Month Adult</div>
+                    <div class="price-label" data-i18n="family.adult">1 Month Adult</div>
                     <div class="price-value black">3 800</div>
                 </div>
                 <div class="price-row">
-                    <div class="price-label">1 Month Child</div>
+                    <div class="price-label" data-i18n="family.child">1 Month Child</div>
                     <div class="price-value black">2 400</div>
                 </div>
             </div>
@@ -692,8 +928,8 @@
         <!-- Personal Training Section -->
         <section id="training">
             <div class="section-header">
-                <h2>Personal Training</h2>
-                <p>* Day pass is included in the cost of a one-time lesson</p>
+                <h2 data-i18n="training.title">Personal Training</h2>
+                <p data-i18n="training.note">* Day pass is included in the cost of a one-time lesson</p>
             </div>
 
             <div class="circle-nav">
@@ -902,8 +1138,8 @@
         <!-- Group Training Section -->
         <section id="group">
             <div class="section-header">
-                <h2>Group Training</h2>
-                <p>In addition to the subscription</p>
+                <h2 data-i18n="group.title">Group Training</h2>
+                <p data-i18n="group.note">In addition to the subscription</p>
             </div>
 
             <div class="circle-nav">
@@ -1000,7 +1236,7 @@
         <!-- SPA & Steam Section -->
         <section id="spa">
             <div class="section-header">
-                <h2>SPA & Steam Rituals</h2>
+                <h2 data-i18n="spa.title">SPA & Steam Rituals</h2>
             </div>
 
             <div class="spa-images">
@@ -1009,9 +1245,187 @@
             </div>
         </section>
 
+        <div class="divider"></div>
+
+        <!-- Schedule Section -->
+        <section id="schedule">
+            <div class="section-header">
+                <h2 data-i18n="schedule.title">Schedule</h2>
+            </div>
+
+            <div class="schedule-wrapper">
+                <!-- Dance Studio Schedule -->
+                <div class="schedule-block">
+                    <div class="schedule-inner">
+                    <div class="schedule-header purple">
+                        <h3>Dance Studio</h3>
+                        <span>PLEASE<br>BOOK FIRST</span>
+                    </div>
+                    <table class="schedule-table">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Mon</th>
+                                <th>Tue</th>
+                                <th>Wed</th>
+                                <th>Thu</th>
+                                <th>Fri</th>
+                                <th>Sat</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="time-cell">9:00</td>
+                                <td class="class-cell">Yoga</td>
+                                <td class="class-cell">Stretching</td>
+                                <td class="class-cell">Circl Mobility</td>
+                                <td class="class-cell">Stretching</td>
+                                <td class="class-cell">Yoga</td>
+                                <td class="class-cell"></td>
+                            </tr>
+                            <tr>
+                                <td class="time-cell">10:00</td>
+                                <td class="class-cell"></td>
+                                <td class="class-cell">Barre</td>
+                                <td class="class-cell">Zumba Toning</td>
+                                <td class="class-cell">Barre</td>
+                                <td class="class-cell"></td>
+                                <td class="class-cell"></td>
+                            </tr>
+                            <tr>
+                                <td class="time-cell">13:10</td>
+                                <td class="class-cell">Yoga Pro</td>
+                                <td class="class-cell"></td>
+                                <td class="class-cell">Yoga Pro</td>
+                                <td class="class-cell"></td>
+                                <td class="class-cell">Yoga Pro</td>
+                                <td class="class-cell"></td>
+                            </tr>
+                            <tr>
+                                <td class="time-cell">17:00</td>
+                                <td class="class-cell">Zumba Step</td>
+                                <td class="class-cell">Fitness</td>
+                                <td class="class-cell"></td>
+                                <td class="class-cell">Fitness</td>
+                                <td class="class-cell">Circl Mobility</td>
+                                <td class="class-cell"></td>
+                            </tr>
+                            <tr>
+                                <td class="time-cell">18:00</td>
+                                <td class="class-cell">Tabata</td>
+                                <td class="class-cell"></td>
+                                <td class="class-cell"></td>
+                                <td class="class-cell"></td>
+                                <td class="class-cell">Zumba</td>
+                                <td class="class-cell"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+
+                <!-- Fight Club Schedule -->
+                <div class="schedule-block">
+                    <div class="schedule-inner">
+                    <div class="schedule-header brown">
+                        <h3>Fight Club</h3>
+                        <span>PLEASE<br>BOOK FIRST</span>
+                    </div>
+                    <table class="schedule-table fight">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Mon</th>
+                                <th>Tue</th>
+                                <th>Wed</th>
+                                <th>Thu</th>
+                                <th>Fri</th>
+                                <th>Sat</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="time-cell">9:30</td>
+                                <td class="class-cell"></td>
+                                <td class="class-cell">Boxing</td>
+                                <td class="class-cell"></td>
+                                <td class="class-cell">Boxing</td>
+                                <td class="class-cell"></td>
+                                <td class="class-cell">Boxing</td>
+                            </tr>
+                            <tr>
+                                <td class="time-cell">10:00</td>
+                                <td class="class-cell"></td>
+                                <td class="class-cell"></td>
+                                <td class="class-cell"></td>
+                                <td class="class-cell"></td>
+                                <td class="class-cell"></td>
+                                <td class="class-cell">Muay Thai</td>
+                            </tr>
+                            <tr>
+                                <td class="time-cell">11:00</td>
+                                <td class="class-cell">Kickboxing</td>
+                                <td class="class-cell"></td>
+                                <td class="class-cell">Kickboxing</td>
+                                <td class="class-cell"></td>
+                                <td class="class-cell">Kickboxing</td>
+                                <td class="class-cell"></td>
+                            </tr>
+                            <tr>
+                                <td class="time-cell">13:00</td>
+                                <td class="class-cell">Jiu-Jitsu<sub>no-gi</sub></td>
+                                <td class="class-cell"></td>
+                                <td class="class-cell">Jiu-Jitsu<sub>no-gi</sub></td>
+                                <td class="class-cell"></td>
+                                <td class="class-cell">Jiu-Jitsu<sub>no-gi</sub></td>
+                                <td class="class-cell"></td>
+                            </tr>
+                            <tr>
+                                <td class="time-cell">16:00</td>
+                                <td class="class-cell"></td>
+                                <td class="class-cell">Muay Thai</td>
+                                <td class="class-cell"></td>
+                                <td class="class-cell">Muay Thai</td>
+                                <td class="class-cell"></td>
+                                <td class="class-cell"></td>
+                            </tr>
+                            <tr>
+                                <td class="time-cell">17:00</td>
+                                <td class="class-cell">Jiu-Jitsu<sub>kids</sub></td>
+                                <td class="class-cell"></td>
+                                <td class="class-cell">Jiu-Jitsu<sub>kids</sub></td>
+                                <td class="class-cell"></td>
+                                <td class="class-cell">Jiu-Jitsu<sub>kids</sub></td>
+                                <td class="class-cell"></td>
+                            </tr>
+                            <tr>
+                                <td class="time-cell">17:30</td>
+                                <td class="class-cell"></td>
+                                <td class="class-cell">Muay Thai<sub>kids</sub></td>
+                                <td class="class-cell"></td>
+                                <td class="class-cell">Muay Thai<sub>kids</sub></td>
+                                <td class="class-cell"></td>
+                                <td class="class-cell"></td>
+                            </tr>
+                            <tr>
+                                <td class="time-cell">18:00</td>
+                                <td class="class-cell">Jiu-Jitsu<sub>gi</sub></td>
+                                <td class="class-cell"></td>
+                                <td class="class-cell">Jiu-Jitsu<sub>gi</sub></td>
+                                <td class="class-cell"></td>
+                                <td class="class-cell">Jiu-Jitsu<sub>gi</sub></td>
+                                <td class="class-cell"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Footer -->
         <footer class="footer">
-            <p class="footer-note">
+            <p class="footer-note" data-i18n="footer.note">
                 * To purchase a personal session package,<br>
                 you need to own a Club Access / Club Access +
             </p>
@@ -1027,6 +1441,176 @@
             const viewerUrl = 'https://docs.google.com/viewer?url=' + encodedUrl + '&embedded=true';
             window.open(viewerUrl, '_blank');
         }
+
+        // Translations
+        const translations = {
+            en: {
+                'tagline': 'Wellness & Fitness Complex',
+                'nav.restaurant': 'Restaurant',
+                'nav.daypass': 'Day Pass',
+                'nav.memberships': 'Memberships',
+                'nav.training': 'Training',
+                'nav.group': 'Group Classes',
+                'nav.spa': 'SPA & Steam',
+                'nav.schedule': 'Schedule',
+                'restaurant.title': 'Restaurant & Bar',
+                'restaurant.menu': 'Restaurant Menu',
+                'restaurant.menuDesc': 'View our food menu',
+                'restaurant.bar': 'Bar Menu',
+                'restaurant.barDesc': 'View our drinks menu',
+                'daypass.title': 'Day Pass',
+                'daypass.fullday': 'Full Day',
+                'daypass.includes': 'Gym, Pool, Hammam, Sauna, Ice Barrel, Towels',
+                'memberships.title': 'Club Memberships',
+                'memberships.include': 'Include:',
+                'memberships.gym': 'Gym and Cardio Room',
+                'memberships.pool': 'Swimming Pool',
+                'memberships.steam': 'Steam Room',
+                'memberships.ice': 'Ice Barrel',
+                'memberships.sauna': 'Russian Sauna',
+                'memberships.collective': 'Collective Steaming',
+                'memberships.japanese': 'Japanese Pool',
+                'memberships.aroma': 'Aroma Ice Barrel',
+                'time.1month': '1 Month',
+                'time.3months': '3 Months',
+                'time.6months': '6 Months',
+                'time.12months': '12 Months',
+                'freeze.1week': '1 freezing week',
+                'freeze.2weeks': '2 freezing weeks',
+                'freeze.1month': '1 month freezing',
+                'family.title': '1+1 Family Access',
+                'family.desc': 'When you purchase a membership for yourself, you can get a special rate for your child',
+                'family.adult': '1 Month Adult',
+                'family.child': '1 Month Child',
+                'training.title': 'Personal Training',
+                'training.note': '* Day pass is included in the cost of a one-time lesson',
+                'group.title': 'Group Training',
+                'group.note': 'In addition to the subscription',
+                'spa.title': 'SPA & Steam Rituals',
+                'schedule.title': 'Schedule',
+                'footer.note': '* To purchase a personal session package,<br>you need to own a Club Access / Club Access +'
+            },
+            ru: {
+                'tagline': 'Велнес и Фитнес Комплекс',
+                'nav.restaurant': 'Ресторан',
+                'nav.daypass': 'Разовый визит',
+                'nav.memberships': 'Абонементы',
+                'nav.training': 'Тренировки',
+                'nav.group': 'Групповые',
+                'nav.spa': 'СПА и Баня',
+                'nav.schedule': 'Расписание',
+                'restaurant.title': 'Ресторан и Бар',
+                'restaurant.menu': 'Меню ресторана',
+                'restaurant.menuDesc': 'Посмотреть меню блюд',
+                'restaurant.bar': 'Барное меню',
+                'restaurant.barDesc': 'Посмотреть меню напитков',
+                'daypass.title': 'Разовый визит',
+                'daypass.fullday': 'Полный день',
+                'daypass.includes': 'Зал, Бассейн, Хаммам, Сауна, Ледяная бочка, Полотенца',
+                'memberships.title': 'Клубные абонементы',
+                'memberships.include': 'Включено:',
+                'memberships.gym': 'Тренажерный и кардио зал',
+                'memberships.pool': 'Бассейн',
+                'memberships.steam': 'Парная',
+                'memberships.ice': 'Ледяная бочка',
+                'memberships.sauna': 'Русская баня',
+                'memberships.collective': 'Коллективное парение',
+                'memberships.japanese': 'Японский бассейн',
+                'memberships.aroma': 'Арома ледяная бочка',
+                'time.1month': '1 Месяц',
+                'time.3months': '3 Месяца',
+                'time.6months': '6 Месяцев',
+                'time.12months': '12 Месяцев',
+                'freeze.1week': '1 неделя заморозки',
+                'freeze.2weeks': '2 недели заморозки',
+                'freeze.1month': '1 месяц заморозки',
+                'family.title': '1+1 Семейный доступ',
+                'family.desc': 'При покупке абонемента для себя, вы получаете специальную цену для ребенка',
+                'family.adult': '1 Месяц Взрослый',
+                'family.child': '1 Месяц Ребенок',
+                'training.title': 'Персональные тренировки',
+                'training.note': '* Разовый визит включен в стоимость одной тренировки',
+                'group.title': 'Групповые тренировки',
+                'group.note': 'Дополнительно к абонементу',
+                'spa.title': 'СПА и Банные ритуалы',
+                'schedule.title': 'Расписание',
+                'footer.note': '* Для покупки пакета персональных тренировок,<br>необходим Club Access / Club Access +'
+            },
+            th: {
+                'tagline': 'ศูนย์สุขภาพและฟิตเนส',
+                'nav.restaurant': 'ร้านอาหาร',
+                'nav.daypass': 'เดย์พาส',
+                'nav.memberships': 'สมาชิก',
+                'nav.training': 'เทรนนิ่ง',
+                'nav.group': 'คลาสกลุ่ม',
+                'nav.spa': 'สปาและซาวน่า',
+                'nav.schedule': 'ตารางเวลา',
+                'restaurant.title': 'ร้านอาหารและบาร์',
+                'restaurant.menu': 'เมนูอาหาร',
+                'restaurant.menuDesc': 'ดูเมนูอาหาร',
+                'restaurant.bar': 'เมนูเครื่องดื่ม',
+                'restaurant.barDesc': 'ดูเมนูเครื่องดื่ม',
+                'daypass.title': 'เดย์พาส',
+                'daypass.fullday': 'เต็มวัน',
+                'daypass.includes': 'ยิม, สระว่ายน้ำ, ฮัมมาม, ซาวน่า, ถังน้ำแข็ง, ผ้าเช็ดตัว',
+                'memberships.title': 'สมาชิกคลับ',
+                'memberships.include': 'รวม:',
+                'memberships.gym': 'ห้องยิมและคาร์ดิโอ',
+                'memberships.pool': 'สระว่ายน้ำ',
+                'memberships.steam': 'ห้องอบไอน้ำ',
+                'memberships.ice': 'ถังน้ำแข็ง',
+                'memberships.sauna': 'ซาวน่ารัสเซีย',
+                'memberships.collective': 'อบไอน้ำรวม',
+                'memberships.japanese': 'สระญี่ปุ่น',
+                'memberships.aroma': 'ถังน้ำแข็งอโรมา',
+                'time.1month': '1 เดือน',
+                'time.3months': '3 เดือน',
+                'time.6months': '6 เดือน',
+                'time.12months': '12 เดือน',
+                'freeze.1week': 'แช่แข็ง 1 สัปดาห์',
+                'freeze.2weeks': 'แช่แข็ง 2 สัปดาห์',
+                'freeze.1month': 'แช่แข็ง 1 เดือน',
+                'family.title': '1+1 ครอบครัว',
+                'family.desc': 'เมื่อซื้อสมาชิกสำหรับตัวเอง คุณจะได้รับราคาพิเศษสำหรับบุตร',
+                'family.adult': '1 เดือน ผู้ใหญ่',
+                'family.child': '1 เดือน เด็ก',
+                'training.title': 'เทรนนิ่งส่วนตัว',
+                'training.note': '* เดย์พาสรวมอยู่ในค่าเรียนครั้งเดียว',
+                'group.title': 'เทรนนิ่งกลุ่ม',
+                'group.note': 'นอกเหนือจากสมาชิก',
+                'spa.title': 'สปาและซาวน่า',
+                'schedule.title': 'ตารางเวลา',
+                'footer.note': '* สำหรับซื้อแพ็คเกจเทรนนิ่งส่วนตัว,<br>ต้องมี Club Access / Club Access +'
+            }
+        };
+
+        let currentLang = localStorage.getItem('kaif-lang') || 'en';
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('kaif-lang', lang);
+
+            // Update active button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.textContent === lang.toUpperCase()) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // Update all translatable elements
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            setLanguage(currentLang);
+        });
     </script>
 </body>
 </html>
