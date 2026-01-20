@@ -551,13 +551,13 @@
             </div>
 
             <div class="menu-grid">
-                <a href="fiels/меню.pdf" class="menu-card" target="_blank">
+                <a href="#" class="menu-card" onclick="openPDF('fiels/меню.pdf'); return false;">
                     <span class="icon">🍽️</span>
                     <h4>Restaurant Menu</h4>
                     <p>View our food menu</p>
                 </a>
 
-                <a href="fiels/Барное_цены (1).pdf" class="menu-card" target="_blank">
+                <a href="#" class="menu-card" onclick="openPDF('fiels/Барное_цены (1).pdf'); return false;">
                     <span class="icon">🍸</span>
                     <h4>Bar Menu</h4>
                     <p>View our drinks menu</p>
@@ -1020,5 +1020,13 @@
             </div>
         </footer>
     </div>
+    <script>
+        function openPDF(path) {
+            const fullUrl = window.location.origin + window.location.pathname.replace('index.html', '') + path;
+            const encodedUrl = encodeURIComponent(fullUrl);
+            const viewerUrl = 'https://docs.google.com/viewer?url=' + encodedUrl + '&embedded=true';
+            window.open(viewerUrl, '_blank');
+        }
+    </script>
 </body>
 </html>
