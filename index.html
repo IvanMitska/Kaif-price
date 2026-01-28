@@ -24,6 +24,7 @@
             --accent-blue: #29b6f6;
             --accent-orange: #f97316;
             --accent-pink: #e879f9;
+            --accent-red: #dc2626;
             --shadow-soft: 0 2px 15px rgba(0,0,0,0.06);
             --shadow-hover: 0 8px 30px rgba(0,0,0,0.1);
             --radius-sm: 12px;
@@ -237,9 +238,13 @@
         /* Info Cards */
         .info-cards {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
             margin: 30px 0;
+        }
+
+        .info-cards.two-cols {
+            grid-template-columns: repeat(2, 1fr);
         }
 
         .info-card {
@@ -263,6 +268,7 @@
 
         .info-card.green::before { background: var(--accent-green); }
         .info-card.black::before { background: var(--accent-black); }
+        .info-card.red::before { background: var(--accent-red); }
 
         .info-card h4 {
             font-size: 14px;
@@ -357,6 +363,7 @@
         .price-value.blue { background: var(--accent-blue); }
         .price-value.orange { background: var(--accent-orange); }
         .price-value.pink { background: var(--accent-pink); }
+        .price-value.red { background: var(--accent-red); }
         .price-value.gradient { background: linear-gradient(135deg, var(--accent-orange), #a855f7); }
 
         /* Divider */
@@ -388,6 +395,7 @@
 
         .badge.green { background: var(--accent-green); color: white; }
         .badge.black { background: var(--accent-black); color: white; }
+        .badge.red { background: var(--accent-red); color: white; }
 
         /* Footer */
         .footer {
@@ -442,6 +450,10 @@
                 grid-template-columns: 1fr;
             }
 
+            .info-cards.two-cols {
+                grid-template-columns: 1fr;
+            }
+
             .circle-item {
                 width: 120px;
                 height: 120px;
@@ -489,6 +501,7 @@
 
         .sub-type.green { background: var(--accent-green); color: white; }
         .sub-type.black { background: var(--accent-black); color: white; }
+        .sub-type.red { background: var(--accent-red); color: white; }
 
         /* Training direction header */
         .direction-header {
@@ -795,8 +808,12 @@
 
             <div class="price-table">
                 <div class="price-row">
-                    <div class="price-label"><span data-i18n="daypass.fullday">Full Day</span><small data-i18n="daypass.includes">Gym, Pool, Hammam, Sauna, Ice Barrel, Towels</small></div>
+                    <div class="price-label"><span data-i18n="daypass.fullday">Day Pass</span><small data-i18n="daypass.includes">Gym, Pool, Steam Room, Russian Sauna, Collective Steaming, Japanese Pool, Aroma Ice Barrel, Unlimited Group Training (Fight Club & Motion)</small></div>
                     <div class="price-value" style="background: linear-gradient(135deg, #06b6d4, #8b5cf6);">590</div>
+                </div>
+                <div class="price-row">
+                    <div class="price-label"><span data-i18n="daypass.weekpass">1 Week Pass</span><small data-i18n="daypass.weekincludes">Gym, Pool, Steam Room, Russian Sauna, Collective Steaming, Japanese Pool, Aroma Ice Barrel, Unlimited Group Training (Fight Club & Motion)</small></div>
+                    <div class="price-value" style="background: linear-gradient(135deg, #22c55e, #06b6d4);">1 990</div>
                 </div>
             </div>
         </section>
@@ -812,6 +829,7 @@
             <div class="circle-nav">
                 <div class="circle-item" style="background: var(--accent-green);">Club<br>Access</div>
                 <div class="circle-item" style="background: var(--accent-black);">Club<br>Access+</div>
+                <div class="circle-item" style="background: var(--accent-red);">Club<br>Access<br>Sport</div>
             </div>
 
             <div class="info-cards">
@@ -838,6 +856,16 @@
                         <li data-i18n="memberships.collective">Collective Steaming</li>
                         <li data-i18n="memberships.japanese">Japanese Pool</li>
                         <li data-i18n="memberships.aroma">Aroma Ice Barrel</li>
+                    </ul>
+                </div>
+
+                <div class="info-card red">
+                    <span class="badge red">Club Access Sport</span>
+                    <h4 data-i18n="memberships.include">Include:</h4>
+                    <ul>
+                        <li data-i18n="memberships.clubaccess">Club Access +</li>
+                        <li data-i18n="memberships.unlimited">Unlimited Group Training</li>
+                        <li data-i18n="memberships.fightmotion">(Fight Club & Motion)</li>
                     </ul>
                 </div>
             </div>
@@ -885,6 +913,17 @@
                 <div class="price-row">
                     <div class="price-label"><span data-i18n="time.12months">12 Months</span><small data-i18n="freeze.1month">1 month freezing</small></div>
                     <div class="price-value black">29 000</div>
+                </div>
+            </div>
+
+            <!-- Club Access Sport -->
+            <div class="section-header">
+                <span class="sub-type red">Club Access Sport</span>
+            </div>
+            <div class="price-table">
+                <div class="price-row">
+                    <div class="price-label"><span data-i18n="time.1month">1 Month</span><small data-i18n="memberships.sportincludes">Club Access + Unlimited Group Training</small></div>
+                    <div class="price-value red">4 900</div>
                 </div>
             </div>
 
@@ -999,23 +1038,23 @@
             </div>
             <div class="price-table">
                 <div class="price-row">
-                    <div class="price-label">Trial Training</div>
+                    <div class="price-label">Trial Training<small>No included Day Pass</small></div>
                     <div class="price-value orange">990</div>
                 </div>
                 <div class="price-row">
-                    <div class="price-label">1 Training</div>
+                    <div class="price-label">1 Training<small>Included Day Pass</small></div>
                     <div class="price-value orange">1 600</div>
                 </div>
                 <div class="price-row">
-                    <div class="price-label">8 Training</div>
+                    <div class="price-label">8 Training<small>Active 4 weeks / Included 8 Pass with Sauna</small></div>
                     <div class="price-value orange">12 000</div>
                 </div>
                 <div class="price-row">
-                    <div class="price-label">12 Training<small>Included Club Access+</small></div>
+                    <div class="price-label">12 Training<small>Active 6 weeks / Included 12 Pass with Sauna</small></div>
                     <div class="price-value orange">16 800</div>
                 </div>
                 <div class="price-row">
-                    <div class="price-label">24 Training<small>Included Club Access+</small></div>
+                    <div class="price-label">24 Training<small>Active 8 weeks / Included 24 Pass with Sauna</small></div>
                     <div class="price-value orange">31 200</div>
                 </div>
             </div>
@@ -1029,23 +1068,23 @@
             </div>
             <div class="price-table">
                 <div class="price-row">
-                    <div class="price-label">Trial Training<small><s>1 980</s></small></div>
-                    <div class="price-value orange">1 400</div>
+                    <div class="price-label">Trial Training<small>No included Day Pass</small></div>
+                    <div class="price-value orange">1 440</div>
                 </div>
                 <div class="price-row">
-                    <div class="price-label">1 Training<small><s>3 200</s></small></div>
+                    <div class="price-label">1 Training<small>No included Day Pass</small></div>
                     <div class="price-value orange">2 240</div>
                 </div>
                 <div class="price-row">
-                    <div class="price-label">8 Training<small><s>24 000</s></small></div>
+                    <div class="price-label">8 Training<small>Active 4 weeks / Included 8 Pass with Sauna</small></div>
                     <div class="price-value orange">16 800</div>
                 </div>
                 <div class="price-row">
-                    <div class="price-label">12 Training<small><s>33 600</s></small></div>
+                    <div class="price-label">12 Training<small>Active 6 weeks / Included 12 Pass with Sauna</small></div>
                     <div class="price-value orange">23 600</div>
                 </div>
                 <div class="price-row">
-                    <div class="price-label">24 Training<small><s>62 400</s></small></div>
+                    <div class="price-label">24 Training<small>Active 8 weeks / Included 24 Pass with Sauna</small></div>
                     <div class="price-value orange">43 700</div>
                 </div>
             </div>
@@ -1063,20 +1102,50 @@
                     <div class="price-value pink">1 200</div>
                 </div>
                 <div class="price-row">
-                    <div class="price-label">1 Training</div>
+                    <div class="price-label">1 Training<small>Included Day Pass</small></div>
                     <div class="price-value pink">2 000</div>
                 </div>
                 <div class="price-row">
-                    <div class="price-label">8 Training</div>
+                    <div class="price-label">8 Training<small>Active 4 weeks / Included 8 Pass with Sauna</small></div>
                     <div class="price-value pink">14 800</div>
                 </div>
                 <div class="price-row">
-                    <div class="price-label">12 Training<small>Included Club Access+</small></div>
+                    <div class="price-label">12 Training<small>Active 6 weeks / Included 12 Pass with Sauna</small></div>
                     <div class="price-value pink">20 400</div>
                 </div>
                 <div class="price-row">
-                    <div class="price-label">24 Training<small>Included Club Access+</small></div>
+                    <div class="price-label">24 Training<small>Active 8 weeks / Included 24 Pass with Sauna</small></div>
                     <div class="price-value pink">36 000</div>
+                </div>
+            </div>
+
+            <div class="section-header">
+                <div class="direction-header">
+                    <span class="direction-dot pink"></span>
+                    <h3>Motion Split</h3>
+                </div>
+                <p>Train together, pay less</p>
+            </div>
+            <div class="price-table">
+                <div class="price-row">
+                    <div class="price-label">Trial Training</div>
+                    <div class="price-value pink">1 700</div>
+                </div>
+                <div class="price-row">
+                    <div class="price-label">1 Training</div>
+                    <div class="price-value pink">2 800</div>
+                </div>
+                <div class="price-row">
+                    <div class="price-label">8 Training<small>Active 4 weeks / Included 8 Pass with Sauna</small></div>
+                    <div class="price-value pink">20 800</div>
+                </div>
+                <div class="price-row">
+                    <div class="price-label">12 Training<small>Active 6 weeks / Included 12 Pass with Sauna</small></div>
+                    <div class="price-value pink">28 600</div>
+                </div>
+                <div class="price-row">
+                    <div class="price-label">24 Training<small>Active 8 weeks / Included 24 Pass with Sauna</small></div>
+                    <div class="price-value pink">50 400</div>
                 </div>
             </div>
 
@@ -1142,47 +1211,12 @@
                 <p data-i18n="group.note">In addition to the subscription</p>
             </div>
 
-            <div class="circle-nav">
-                <div class="circle-item small" style="background: var(--accent-pink);">KAIF<br>Motion</div>
-                <div class="circle-item small" style="background: var(--accent-orange);">KAIF<br>Fight Club</div>
-                <div class="circle-item small" style="background: var(--accent-blue);">Swimming<br>Pool</div>
-            </div>
-
-            <!-- Motion & Fight Club Group -->
-            <div class="section-header">
-                <h3>KAIF Motion & Fight Club</h3>
-                <p>* The validity period is not limited by time</p>
-            </div>
-            <div class="price-table">
-                <div class="price-row">
-                    <div class="price-label">1 Class<small>Includes Day Pass</small></div>
-                    <div class="price-value gradient">600</div>
-                </div>
-                <div class="price-row">
-                    <div class="price-label">4 Classes</div>
-                    <div class="price-value gradient">2 000</div>
-                </div>
-                <div class="price-row">
-                    <div class="price-label">12 Classes</div>
-                    <div class="price-value gradient">3 000</div>
-                </div>
-                <div class="price-row">
-                    <div class="price-label">24 Classes</div>
-                    <div class="price-value gradient">5 500</div>
-                </div>
-                <div class="price-row">
-                    <div class="price-label">48 Classes</div>
-                    <div class="price-value gradient">10 200</div>
-                </div>
-            </div>
-
             <!-- Swimming Pool Group -->
             <div class="section-header">
                 <div class="direction-header">
                     <span class="direction-dot blue"></span>
                     <h3>Swimming Pool</h3>
                 </div>
-                <p>* The validity period is not limited by time</p>
             </div>
             <div class="price-table">
                 <div class="price-row">
@@ -1194,11 +1228,11 @@
                     <div class="price-value blue">800</div>
                 </div>
                 <div class="price-row">
-                    <div class="price-label">8 Classes</div>
+                    <div class="price-label">8 Classes<small>Active 1 month / Included Access+</small></div>
                     <div class="price-value blue">3 800</div>
                 </div>
                 <div class="price-row">
-                    <div class="price-label">12 Classes</div>
+                    <div class="price-label">12 Classes<small>Active 1.5 month / Included Access+</small></div>
                     <div class="price-value blue">5 500</div>
                 </div>
             </div>
@@ -1209,7 +1243,6 @@
                     <span class="direction-dot blue"></span>
                     <h3>Swimming Pool <span class="kids-title">KIDS</span></h3>
                 </div>
-                <p>* The validity period is not limited by time</p>
             </div>
             <div class="price-table">
                 <div class="price-row">
@@ -1221,11 +1254,11 @@
                     <div class="price-value blue">800</div>
                 </div>
                 <div class="price-row">
-                    <div class="price-label">8 Classes<small>Active 1 month / Club Access</small></div>
+                    <div class="price-label">8 Classes<small>Active 1 month / Included Access+</small></div>
                     <div class="price-value blue">3 800</div>
                 </div>
                 <div class="price-row">
-                    <div class="price-label">12 Classes<small>Active 1.5 month / Club Access</small></div>
+                    <div class="price-label">12 Classes<small>Active 1.5 month / Included Access+</small></div>
                     <div class="price-value blue">5 500</div>
                 </div>
             </div>
@@ -1427,7 +1460,7 @@
         <footer class="footer">
             <p class="footer-note" data-i18n="footer.note">
                 * To purchase a personal session package,<br>
-                you need to own a Club Access / Club Access +
+                you need to own a Club Access / Club Access + / Club Access Sport
             </p>
             <div class="footer-logo">
                 <img src="logo-header.png" alt="KAIF">
@@ -1459,8 +1492,10 @@
                 'restaurant.bar': 'Bar Menu',
                 'restaurant.barDesc': 'View our drinks menu',
                 'daypass.title': 'Day Pass',
-                'daypass.fullday': 'Full Day',
-                'daypass.includes': 'Gym, Pool, Hammam, Sauna, Ice Barrel, Towels',
+                'daypass.fullday': 'Day Pass',
+                'daypass.includes': 'Gym, Pool, Steam Room, Russian Sauna, Collective Steaming, Japanese Pool, Aroma Ice Barrel, Unlimited Group Training (Fight Club & Motion)',
+                'daypass.weekpass': '1 Week Pass',
+                'daypass.weekincludes': 'Gym, Pool, Steam Room, Russian Sauna, Collective Steaming, Japanese Pool, Aroma Ice Barrel, Unlimited Group Training (Fight Club & Motion)',
                 'memberships.title': 'Club Memberships',
                 'memberships.include': 'Include:',
                 'memberships.gym': 'Gym and Cardio Room',
@@ -1471,6 +1506,10 @@
                 'memberships.collective': 'Collective Steaming',
                 'memberships.japanese': 'Japanese Pool',
                 'memberships.aroma': 'Aroma Ice Barrel',
+                'memberships.clubaccess': 'Club Access +',
+                'memberships.unlimited': 'Unlimited Group Training',
+                'memberships.fightmotion': '(Fight Club & Motion)',
+                'memberships.sportincludes': 'Club Access + Unlimited Group Training',
                 'time.1month': '1 Month',
                 'time.3months': '3 Months',
                 'time.6months': '6 Months',
@@ -1488,7 +1527,7 @@
                 'group.note': 'In addition to the subscription',
                 'spa.title': 'SPA & Steam Rituals',
                 'schedule.title': 'Schedule',
-                'footer.note': '* To purchase a personal session package,<br>you need to own a Club Access / Club Access +'
+                'footer.note': '* To purchase a personal session package,<br>you need to own a Club Access / Club Access + / Club Access Sport'
             },
             ru: {
                 'tagline': 'Велнес и Фитнес Комплекс',
@@ -1505,8 +1544,10 @@
                 'restaurant.bar': 'Барное меню',
                 'restaurant.barDesc': 'Посмотреть меню напитков',
                 'daypass.title': 'Разовый визит',
-                'daypass.fullday': 'Полный день',
-                'daypass.includes': 'Зал, Бассейн, Хаммам, Сауна, Ледяная бочка, Полотенца',
+                'daypass.fullday': 'Разовый визит',
+                'daypass.includes': 'Зал, Бассейн, Парная, Русская баня, Коллективное парение, Японский бассейн, Арома ледяная бочка, Безлимит групповых (Fight Club & Motion)',
+                'daypass.weekpass': 'Недельный абонемент',
+                'daypass.weekincludes': 'Зал, Бассейн, Парная, Русская баня, Коллективное парение, Японский бассейн, Арома ледяная бочка, Безлимит групповых (Fight Club & Motion)',
                 'memberships.title': 'Клубные абонементы',
                 'memberships.include': 'Включено:',
                 'memberships.gym': 'Тренажерный и кардио зал',
@@ -1517,6 +1558,10 @@
                 'memberships.collective': 'Коллективное парение',
                 'memberships.japanese': 'Японский бассейн',
                 'memberships.aroma': 'Арома ледяная бочка',
+                'memberships.clubaccess': 'Club Access +',
+                'memberships.unlimited': 'Безлимит групповых тренировок',
+                'memberships.fightmotion': '(Fight Club & Motion)',
+                'memberships.sportincludes': 'Club Access + Безлимит групповых',
                 'time.1month': '1 Месяц',
                 'time.3months': '3 Месяца',
                 'time.6months': '6 Месяцев',
@@ -1534,7 +1579,7 @@
                 'group.note': 'Дополнительно к абонементу',
                 'spa.title': 'СПА и Банные ритуалы',
                 'schedule.title': 'Расписание',
-                'footer.note': '* Для покупки пакета персональных тренировок,<br>необходим Club Access / Club Access +'
+                'footer.note': '* Для покупки пакета персональных тренировок,<br>необходим Club Access / Club Access + / Club Access Sport'
             },
             th: {
                 'tagline': 'ศูนย์สุขภาพและฟิตเนส',
@@ -1551,8 +1596,10 @@
                 'restaurant.bar': 'เมนูเครื่องดื่ม',
                 'restaurant.barDesc': 'ดูเมนูเครื่องดื่ม',
                 'daypass.title': 'เดย์พาส',
-                'daypass.fullday': 'เต็มวัน',
-                'daypass.includes': 'ยิม, สระว่ายน้ำ, ฮัมมาม, ซาวน่า, ถังน้ำแข็ง, ผ้าเช็ดตัว',
+                'daypass.fullday': 'เดย์พาส',
+                'daypass.includes': 'ยิม, สระว่ายน้ำ, ห้องอบไอน้ำ, ซาวน่ารัสเซีย, อบไอน้ำรวม, สระญี่ปุ่น, ถังน้ำแข็งอโรมา, เทรนนิ่งกลุ่มไม่จำกัด (Fight Club & Motion)',
+                'daypass.weekpass': 'พาส 1 สัปดาห์',
+                'daypass.weekincludes': 'ยิม, สระว่ายน้ำ, ห้องอบไอน้ำ, ซาวน่ารัสเซีย, อบไอน้ำรวม, สระญี่ปุ่น, ถังน้ำแข็งอโรมา, เทรนนิ่งกลุ่มไม่จำกัด (Fight Club & Motion)',
                 'memberships.title': 'สมาชิกคลับ',
                 'memberships.include': 'รวม:',
                 'memberships.gym': 'ห้องยิมและคาร์ดิโอ',
@@ -1563,6 +1610,10 @@
                 'memberships.collective': 'อบไอน้ำรวม',
                 'memberships.japanese': 'สระญี่ปุ่น',
                 'memberships.aroma': 'ถังน้ำแข็งอโรมา',
+                'memberships.clubaccess': 'Club Access +',
+                'memberships.unlimited': 'เทรนนิ่งกลุ่มไม่จำกัด',
+                'memberships.fightmotion': '(Fight Club & Motion)',
+                'memberships.sportincludes': 'Club Access + เทรนนิ่งกลุ่มไม่จำกัด',
                 'time.1month': '1 เดือน',
                 'time.3months': '3 เดือน',
                 'time.6months': '6 เดือน',
@@ -1580,7 +1631,7 @@
                 'group.note': 'นอกเหนือจากสมาชิก',
                 'spa.title': 'สปาและซาวน่า',
                 'schedule.title': 'ตารางเวลา',
-                'footer.note': '* สำหรับซื้อแพ็คเกจเทรนนิ่งส่วนตัว,<br>ต้องมี Club Access / Club Access +'
+                'footer.note': '* สำหรับซื้อแพ็คเกจเทรนนิ่งส่วนตัว,<br>ต้องมี Club Access / Club Access + / Club Access Sport'
             }
         };
 
