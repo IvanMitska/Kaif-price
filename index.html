@@ -583,6 +583,10 @@
             background: linear-gradient(135deg, #b45309, #d97706);
         }
 
+        .schedule-header.blue {
+            background: linear-gradient(135deg, #1e6cc5, #2980d9);
+        }
+
         .schedule-header h3 {
             font-size: 24px;
             font-weight: 800;
@@ -667,12 +671,22 @@
             border-right: 1px solid #e0e0e0;
         }
 
+        .schedule-table.swim .time-cell {
+            color: #1e6cc5;
+            background: rgba(30, 108, 197, 0.08);
+            border-right: 1px solid #e0e0e0;
+        }
+
         .schedule-table tr:hover .time-cell {
             background: rgba(147, 51, 234, 0.1);
         }
 
         .schedule-table.fight tr:hover .time-cell {
             background: rgba(180, 83, 9, 0.1);
+        }
+
+        .schedule-table.swim tr:hover .time-cell {
+            background: rgba(30, 108, 197, 0.1);
         }
 
         .schedule-table .class-cell {
@@ -1319,9 +1333,9 @@
                             <tr>
                                 <td class="time-cell">10:00</td>
                                 <td class="class-cell"></td>
-                                <td class="class-cell">Barre</td>
+                                <td class="class-cell"></td>
                                 <td class="class-cell">Zumba Toning</td>
-                                <td class="class-cell">Barre</td>
+                                <td class="class-cell"></td>
                                 <td class="class-cell"></td>
                                 <td class="class-cell"></td>
                             </tr>
@@ -1336,10 +1350,10 @@
                             </tr>
                             <tr>
                                 <td class="time-cell">17:00</td>
-                                <td class="class-cell">Zumba Step</td>
-                                <td class="class-cell">Fitness</td>
                                 <td class="class-cell"></td>
-                                <td class="class-cell">Fitness</td>
+                                <td class="class-cell">Full Body</td>
+                                <td class="class-cell"></td>
+                                <td class="class-cell">Full Body</td>
                                 <td class="class-cell">Circl Mobility</td>
                                 <td class="class-cell"></td>
                             </tr>
@@ -1389,9 +1403,9 @@
                             <tr>
                                 <td class="time-cell">10:00</td>
                                 <td class="class-cell"></td>
+                                <td class="class-cell">Muay Thai</td>
                                 <td class="class-cell"></td>
-                                <td class="class-cell"></td>
-                                <td class="class-cell"></td>
+                                <td class="class-cell">Muay Thai</td>
                                 <td class="class-cell"></td>
                                 <td class="class-cell">Muay Thai</td>
                             </tr>
@@ -1414,39 +1428,55 @@
                                 <td class="class-cell"></td>
                             </tr>
                             <tr>
-                                <td class="time-cell">16:00</td>
-                                <td class="class-cell"></td>
-                                <td class="class-cell">Muay Thai</td>
-                                <td class="class-cell"></td>
-                                <td class="class-cell">Muay Thai</td>
-                                <td class="class-cell"></td>
-                                <td class="class-cell"></td>
-                            </tr>
-                            <tr>
-                                <td class="time-cell">17:00</td>
-                                <td class="class-cell">Jiu-Jitsu<sub>kids</sub></td>
-                                <td class="class-cell"></td>
-                                <td class="class-cell">Jiu-Jitsu<sub>kids</sub></td>
-                                <td class="class-cell"></td>
-                                <td class="class-cell">Jiu-Jitsu<sub>kids</sub></td>
-                                <td class="class-cell"></td>
-                            </tr>
-                            <tr>
-                                <td class="time-cell">17:30</td>
-                                <td class="class-cell"></td>
-                                <td class="class-cell">Muay Thai<sub>kids</sub></td>
-                                <td class="class-cell"></td>
-                                <td class="class-cell">Muay Thai<sub>kids</sub></td>
-                                <td class="class-cell"></td>
-                                <td class="class-cell"></td>
-                            </tr>
-                            <tr>
                                 <td class="time-cell">18:00</td>
                                 <td class="class-cell">Jiu-Jitsu<sub>gi</sub></td>
                                 <td class="class-cell"></td>
                                 <td class="class-cell">Jiu-Jitsu<sub>gi</sub></td>
                                 <td class="class-cell"></td>
                                 <td class="class-cell">Jiu-Jitsu<sub>gi</sub></td>
+                                <td class="class-cell"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+
+                <!-- Swimming Pool Schedule -->
+                <div class="schedule-block">
+                    <div class="schedule-inner">
+                    <div class="schedule-header blue">
+                        <h3>Swim</h3>
+                        <span>PLEASE<br>BOOK FIRST</span>
+                    </div>
+                    <table class="schedule-table swim">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Mon</th>
+                                <th>Tue</th>
+                                <th>Wed</th>
+                                <th>Thu</th>
+                                <th>Fri</th>
+                                <th>Sat</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="time-cell">9:00</td>
+                                <td class="class-cell"></td>
+                                <td class="class-cell">Adults Group</td>
+                                <td class="class-cell"></td>
+                                <td class="class-cell">Adults Group</td>
+                                <td class="class-cell"></td>
+                                <td class="class-cell"></td>
+                            </tr>
+                            <tr>
+                                <td class="time-cell">17:00</td>
+                                <td class="class-cell"></td>
+                                <td class="class-cell"></td>
+                                <td class="class-cell">Kids 7-12</td>
+                                <td class="class-cell"></td>
+                                <td class="class-cell">Kids 7-12</td>
                                 <td class="class-cell"></td>
                             </tr>
                         </tbody>
