@@ -761,6 +761,221 @@
             color: white;
             border-color: var(--text-primary);
         }
+
+        /* Events Section */
+        .events-scroll-wrapper {
+            margin-top: 30px;
+            margin-left: -25px;
+            margin-right: -25px;
+            padding: 0 25px;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .events-scroll-wrapper::-webkit-scrollbar {
+            display: none;
+        }
+
+        .events-grid {
+            display: flex;
+            gap: 20px;
+            padding-bottom: 10px;
+            min-width: min-content;
+            align-items: stretch;
+        }
+
+        .event-card {
+            flex: 0 0 280px;
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .event-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .event-image {
+            position: relative;
+            width: 100%;
+            height: 320px;
+            overflow: hidden;
+            border-radius: var(--radius-md);
+        }
+
+        .event-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+
+        .event-card:hover .event-image img {
+            transform: scale(1.03);
+        }
+
+        .event-date-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: white;
+            color: var(--text-primary);
+            padding: 8px 12px;
+            border-radius: 10px;
+            text-align: center;
+            min-width: 50px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .event-date-badge .day {
+            font-size: 22px;
+            font-weight: 800;
+            line-height: 1;
+            display: block;
+            color: #1a1a1a;
+        }
+
+        .event-date-badge .month {
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 2px;
+            display: block;
+            color: #666;
+        }
+
+        .event-content {
+            padding: 20px 5px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .event-title {
+            font-size: 16px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+            line-height: 1.3;
+            min-height: 42px;
+        }
+
+        .event-meta {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 15px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        .event-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .event-meta svg {
+            width: 14px;
+            height: 14px;
+            opacity: 0.6;
+        }
+
+        .event-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 18px;
+        }
+
+        .event-tag {
+            background: transparent;
+            color: var(--text-primary);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            border: 1px solid #ddd;
+            transition: all 0.2s;
+        }
+
+        .event-tag:hover {
+            border-color: #999;
+        }
+
+        .event-highlight {
+            display: block;
+            width: 100%;
+            background: linear-gradient(135deg, #E8734A, #D4A574);
+            color: white;
+            padding: 14px 20px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 700;
+            margin-top: auto;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .event-highlight:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 20px rgba(232, 115, 74, 0.3);
+        }
+
+        .event-description {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-bottom: 0;
+            display: none;
+        }
+
+        .event-book-btn {
+            display: none;
+        }
+
+        @media (max-width: 500px) {
+            .events-scroll-wrapper {
+                margin-left: -25px;
+                margin-right: -25px;
+                padding: 0 25px;
+            }
+
+            .event-card {
+                flex: 0 0 260px;
+            }
+
+            .event-image {
+                height: 300px;
+            }
+
+            .event-title {
+                font-size: 14px;
+                min-height: 38px;
+            }
+
+            .event-tag {
+                font-size: 10px;
+                padding: 5px 10px;
+            }
+
+            .event-highlight {
+                font-size: 13px;
+                padding: 12px 16px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -782,6 +997,7 @@
 
         <!-- Navigation -->
         <nav class="quick-nav">
+            <a href="#events" data-i18n="nav.events">Events</a>
             <a href="#menu" data-i18n="nav.restaurant">Restaurant</a>
             <a href="#daypass" data-i18n="nav.daypass">Day Pass</a>
             <a href="#memberships" data-i18n="nav.memberships">Memberships</a>
@@ -791,9 +1007,150 @@
             <a href="#schedule" data-i18n="nav.schedule">Schedule</a>
         </nav>
 
+        <!-- Upcoming Events Section -->
+        <section id="events">
+            <div class="section-header first">
+                <h2 data-i18n="events.title">Upcoming Events</h2>
+            </div>
+
+            <div class="events-scroll-wrapper">
+                <div class="events-grid">
+                    <!-- Event 1: Pool Party -->
+                    <div class="event-card">
+                        <div class="event-image">
+                            <img src="events/pool-party.jpeg" alt="Pool Party">
+                            <div class="event-date-badge">
+                                <span class="day">21</span>
+                                <span class="month">FEB</span>
+                            </div>
+                        </div>
+                        <div class="event-content">
+                            <h3 class="event-title" data-i18n="events.poolparty.title">Pool Party</h3>
+                            <div class="event-meta">
+                                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>16:00 — 20:00</span>
+                                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Pool</span>
+                            </div>
+                            <div class="event-tags">
+                                <span class="event-tag">DJ Show</span>
+                                <span class="event-tag">Welcome Drink</span>
+                                <span class="event-tag">Group Steaming</span>
+                            </div>
+                            <a href="https://wa.me/66624805877?text=Hello!%20I%20want%20to%20book%20Pool%20Party%20on%20February%2021" target="_blank" class="event-highlight" data-i18n="events.poolparty.highlight">1+1 for Special Mocktails</a>
+                        </div>
+                    </div>
+
+                    <!-- Event 2: Apollo Fight Night (Main) -->
+                    <div class="event-card">
+                        <div class="event-image">
+                            <img src="events/apollo-fight-main.jpg" alt="Apollo Fight Night">
+                            <div class="event-date-badge">
+                                <span class="day">14</span>
+                                <span class="month">FEB</span>
+                            </div>
+                        </div>
+                        <div class="event-content">
+                            <h3 class="event-title" data-i18n="events.apollo.title">Apollo Fight Night</h3>
+                            <div class="event-meta">
+                                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>19:00 — 22:00</span>
+                                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>KAIF</span>
+                            </div>
+                            <div class="event-tags">
+                                <span class="event-tag">10 Fights</span>
+                                <span class="event-tag">Pro & Amateur</span>
+                                <span class="event-tag">Main Event</span>
+                                <span class="event-tag">Live Boxing</span>
+                                <span class="event-tag">KAIF x Apollo</span>
+                                <span class="event-tag">Tickets Available</span>
+                            </div>
+                            <a href="https://wa.me/66624805877?text=Hello!%20I%20want%20to%20buy%20tickets%20for%20Apollo%20Fight%20Night%20on%20February%2014" target="_blank" class="event-highlight">Palibin vs Sharov</a>
+                        </div>
+                    </div>
+
+                    <!-- Event 3: Apollo Fight Night — VIP Table for Four -->
+                    <div class="event-card">
+                        <div class="event-image">
+                            <img src="events/apollo-fight-vip-four.png" alt="VIP Table for Four">
+                            <div class="event-date-badge">
+                                <span class="day">14</span>
+                                <span class="month">FEB</span>
+                            </div>
+                        </div>
+                        <div class="event-content">
+                            <h3 class="event-title" data-i18n="events.vipfour.title">Apollo Fight Night — VIP Table for Four</h3>
+                            <div class="event-meta">
+                                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>19:00 — 22:00</span>
+                                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>KAIF</span>
+                            </div>
+                            <div class="event-tags">
+                                <span class="event-tag">4 Event Tickets</span>
+                                <span class="event-tag">Private Table</span>
+                                <span class="event-tag">Cheese Platter</span>
+                                <span class="event-tag">Fruit Platter</span>
+                                <span class="event-tag">Soft Drinks</span>
+                                <span class="event-tag">Bottle Included</span>
+                            </div>
+                            <a href="https://wa.me/66624805877?text=Hello!%20I%20want%20to%20book%20VIP%20Table%20for%20Four%20at%20Apollo%20Fight%20Night%20on%20February%2014" target="_blank" class="event-highlight">10,000 THB</a>
+                        </div>
+                    </div>
+
+                    <!-- Event 4: Apollo Fight Night — VIP Table for Two -->
+                    <div class="event-card">
+                        <div class="event-image">
+                            <img src="events/apollo-fight-vip-two.png" alt="VIP Table for Two">
+                            <div class="event-date-badge">
+                                <span class="day">14</span>
+                                <span class="month">FEB</span>
+                            </div>
+                        </div>
+                        <div class="event-content">
+                            <h3 class="event-title" data-i18n="events.viptwo.title">Apollo Fight Night — VIP Table for Two</h3>
+                            <div class="event-meta">
+                                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>19:00 — 22:00</span>
+                                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>KAIF</span>
+                            </div>
+                            <div class="event-tags">
+                                <span class="event-tag">2 Event Tickets</span>
+                                <span class="event-tag">Private Table</span>
+                                <span class="event-tag">Cheese Platter</span>
+                                <span class="event-tag">Fruit Platter</span>
+                                <span class="event-tag">Soft Drinks</span>
+                                <span class="event-tag">2 Cocktails</span>
+                            </div>
+                            <a href="https://wa.me/66624805877?text=Hello!%20I%20want%20to%20book%20VIP%20Table%20for%20Two%20at%20Apollo%20Fight%20Night%20on%20February%2014" target="_blank" class="event-highlight">4,000 THB</a>
+                        </div>
+                    </div>
+
+                    <!-- Event 5: Apollo Fight Night — Tickets -->
+                    <div class="event-card">
+                        <div class="event-image">
+                            <img src="events/apollo-fight-tickets.png" alt="Fight Night Tickets">
+                            <div class="event-date-badge">
+                                <span class="day">14</span>
+                                <span class="month">FEB</span>
+                            </div>
+                        </div>
+                        <div class="event-content">
+                            <h3 class="event-title" data-i18n="events.tickets.title">Apollo Fight Night — Tickets</h3>
+                            <div class="event-meta">
+                                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>19:00 — 22:00</span>
+                                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>KAIF</span>
+                            </div>
+                            <div class="event-tags">
+                                <span class="event-tag">Event Entry</span>
+                                <span class="event-tag">Access to All Fights</span>
+                            </div>
+                            <a href="https://wa.me/66624805877?text=Hello!%20I%20want%20to%20buy%20tickets%20for%20Apollo%20Fight%20Night%20on%20February%2014" target="_blank" class="event-highlight" data-i18n="events.tickets.highlight">From 600 THB</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
         <!-- Restaurant & Bar Section -->
         <section id="menu">
-            <div class="section-header first">
+            <div class="section-header">
                 <h2 data-i18n="restaurant.title">Restaurant & Bar</h2>
             </div>
 
@@ -1349,21 +1706,12 @@
                                 <td class="class-cell"></td>
                             </tr>
                             <tr>
-                                <td class="time-cell">17:00</td>
-                                <td class="class-cell"></td>
-                                <td class="class-cell">Full Body</td>
-                                <td class="class-cell"></td>
-                                <td class="class-cell">Full Body</td>
-                                <td class="class-cell">Circl Mobility</td>
-                                <td class="class-cell"></td>
-                            </tr>
-                            <tr>
                                 <td class="time-cell">18:00</td>
-                                <td class="class-cell">Tabata</td>
-                                <td class="class-cell"></td>
-                                <td class="class-cell"></td>
-                                <td class="class-cell"></td>
                                 <td class="class-cell">Zumba</td>
+                                <td class="class-cell"></td>
+                                <td class="class-cell"></td>
+                                <td class="class-cell"></td>
+                                <td class="class-cell"></td>
                                 <td class="class-cell"></td>
                             </tr>
                         </tbody>
@@ -1393,21 +1741,12 @@
                         <tbody>
                             <tr>
                                 <td class="time-cell">9:30</td>
-                                <td class="class-cell"></td>
+                                <td class="class-cell">Muay-Thai</td>
                                 <td class="class-cell">Boxing</td>
-                                <td class="class-cell"></td>
+                                <td class="class-cell">Muay-Thai</td>
                                 <td class="class-cell">Boxing</td>
-                                <td class="class-cell"></td>
+                                <td class="class-cell">Muay-Thai</td>
                                 <td class="class-cell">Boxing</td>
-                            </tr>
-                            <tr>
-                                <td class="time-cell">10:00</td>
-                                <td class="class-cell"></td>
-                                <td class="class-cell">Muay Thai</td>
-                                <td class="class-cell"></td>
-                                <td class="class-cell">Muay Thai</td>
-                                <td class="class-cell"></td>
-                                <td class="class-cell">Muay Thai</td>
                             </tr>
                             <tr>
                                 <td class="time-cell">11:00</td>
@@ -1419,21 +1758,12 @@
                                 <td class="class-cell"></td>
                             </tr>
                             <tr>
-                                <td class="time-cell">13:00</td>
-                                <td class="class-cell">Jiu-Jitsu<sub>no-gi</sub></td>
-                                <td class="class-cell"></td>
-                                <td class="class-cell">Jiu-Jitsu<sub>no-gi</sub></td>
-                                <td class="class-cell"></td>
-                                <td class="class-cell">Jiu-Jitsu<sub>no-gi</sub></td>
-                                <td class="class-cell"></td>
-                            </tr>
-                            <tr>
                                 <td class="time-cell">18:00</td>
-                                <td class="class-cell">Jiu-Jitsu<sub>gi</sub></td>
+                                <td class="class-cell">Jiu-Jitsu</td>
                                 <td class="class-cell"></td>
-                                <td class="class-cell">Jiu-Jitsu<sub>gi</sub></td>
+                                <td class="class-cell">Jiu-Jitsu</td>
                                 <td class="class-cell"></td>
-                                <td class="class-cell">Jiu-Jitsu<sub>gi</sub></td>
+                                <td class="class-cell">Jiu-Jitsu</td>
                                 <td class="class-cell"></td>
                             </tr>
                         </tbody>
@@ -1613,10 +1943,26 @@
                 'sched.fri': 'Fri',
                 'sched.sat': 'Sat',
                 'sched.adults': 'Adults Group',
-                'sched.kids': 'Kids 7-12'
+                'sched.kids': 'Kids 7-12',
+                'nav.events': 'Events',
+                'events.title': 'Upcoming Events',
+                'events.booknow': 'Book Now',
+                'events.poolparty.title': 'Pool Party',
+                'events.poolparty.highlight': '1+1 for Special Mocktails',
+                'events.poolparty.desc': 'Music, water, sunset, and mocktails — the perfect vibe to relax and move',
+                'events.apollo.title': 'Apollo Fight Night',
+                'events.apollo.desc': 'A real boxing night. Main event: Anton Palibin vs Vitaly Sharov. Two schools. Two camps.',
+                'events.vipfour.title': 'Apollo Fight Night — VIP Table for Four',
+                'events.vipfour.desc': 'The ultimate ringside experience for you and your group. KAIF x Apollo Gym presents an unforgettable fight night experience.',
+                'events.viptwo.title': 'Apollo Fight Night — VIP Table for Two',
+                'events.viptwo.desc': 'Perfect for couples or friends. Enjoy the fights with premium service and special cocktails.',
+                'events.tickets.title': 'Apollo Fight Night — Tickets',
+                'events.tickets.highlight': 'From 600 THB',
+                'events.tickets.desc': 'General Admission 1,000 THB • Club Member Ticket 600 THB. Special rate for active club members.'
             },
             ru: {
                 'tagline': 'Велнес и Фитнес Комплекс',
+                'nav.events': 'События',
                 'nav.restaurant': 'Ресторан',
                 'nav.daypass': 'Разовый визит',
                 'nav.memberships': 'Абонементы',
@@ -1702,10 +2048,25 @@
                 'sched.fri': 'Пт',
                 'sched.sat': 'Сб',
                 'sched.adults': 'Группа взрослые',
-                'sched.kids': 'Дети 7-12'
+                'sched.kids': 'Дети 7-12',
+                'events.title': 'Ближайшие события',
+                'events.booknow': 'Забронировать',
+                'events.poolparty.title': 'Pool Party',
+                'events.poolparty.highlight': '1+1 на специальные коктейли',
+                'events.poolparty.desc': 'Музыка, вода, закат и мохито — идеальная атмосфера для отдыха',
+                'events.apollo.title': 'Apollo Fight Night',
+                'events.apollo.desc': 'Настоящий боксёрский вечер. Главный бой: Антон Палибин vs Виталий Шаров. Две школы. Два лагеря.',
+                'events.vipfour.title': 'Apollo Fight Night — VIP стол на четверых',
+                'events.vipfour.desc': 'Лучший опыт у ринга для вас и вашей компании. KAIF x Apollo Gym представляют незабываемый вечер боёв.',
+                'events.viptwo.title': 'Apollo Fight Night — VIP стол на двоих',
+                'events.viptwo.desc': 'Идеально для пар или друзей. Наслаждайтесь боями с премиум-сервисом и специальными коктейлями.',
+                'events.tickets.title': 'Apollo Fight Night — Билеты',
+                'events.tickets.highlight': 'От 600 THB',
+                'events.tickets.desc': 'Общий вход 1,000 THB • Билет для членов клуба 600 THB. Специальная цена для активных членов клуба.'
             },
             th: {
                 'tagline': 'ศูนย์สุขภาพและฟิตเนส',
+                'nav.events': 'กิจกรรม',
                 'nav.restaurant': 'ร้านอาหาร',
                 'nav.daypass': 'เดย์พาส',
                 'nav.memberships': 'สมาชิก',
@@ -1791,7 +2152,21 @@
                 'sched.fri': 'ศ.',
                 'sched.sat': 'ส.',
                 'sched.adults': 'กลุ่มผู้ใหญ่',
-                'sched.kids': 'เด็ก 7-12'
+                'sched.kids': 'เด็ก 7-12',
+                'events.title': 'กิจกรรมที่กำลังจะมาถึง',
+                'events.booknow': 'จองเลย',
+                'events.poolparty.title': 'Pool Party',
+                'events.poolparty.highlight': '1+1 สำหรับม็อคเทลพิเศษ',
+                'events.poolparty.desc': 'ดนตรี น้ำ พระอาทิตย์ตก และม็อคเทล — บรรยากาศที่สมบูรณ์แบบเพื่อผ่อนคลาย',
+                'events.apollo.title': 'Apollo Fight Night',
+                'events.apollo.desc': 'คืนมวยจริง การแข่งขันหลัก: Anton Palibin vs Vitaly Sharov สองโรงเรียน สองค่าย',
+                'events.vipfour.title': 'Apollo Fight Night — โต๊ะ VIP สำหรับ 4 คน',
+                'events.vipfour.desc': 'ประสบการณ์ริงไซด์สุดพิเศษสำหรับคุณและกลุ่มของคุณ KAIF x Apollo Gym',
+                'events.viptwo.title': 'Apollo Fight Night — โต๊ะ VIP สำหรับ 2 คน',
+                'events.viptwo.desc': 'เหมาะสำหรับคู่รักหรือเพื่อน เพลิดเพลินกับการแข่งขันพร้อมบริการพรีเมียม',
+                'events.tickets.title': 'Apollo Fight Night — บัตรเข้าชม',
+                'events.tickets.highlight': 'เริ่มต้น 600 THB',
+                'events.tickets.desc': 'บัตรทั่วไป 1,000 THB • บัตรสมาชิกคลับ 600 THB ราคาพิเศษสำหรับสมาชิก'
             }
         };
 
