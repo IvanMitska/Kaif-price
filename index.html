@@ -537,6 +537,65 @@
             box-shadow: var(--shadow-soft);
         }
 
+        /* Massage Table */
+        .massage-table {
+            background: white;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-soft);
+            overflow: hidden;
+            margin-top: 20px;
+        }
+
+        .massage-header, .massage-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+            gap: 5px;
+            padding: 12px 15px;
+        }
+
+        .massage-header {
+            background: var(--bg-dark);
+            color: white;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .massage-row {
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .massage-row:last-child {
+            border-bottom: none;
+        }
+
+        .massage-service {
+            font-weight: 500;
+            text-align: left;
+        }
+
+        .massage-time, .massage-price {
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .massage-price {
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 480px) {
+            .massage-header, .massage-row {
+                grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
+                padding: 10px 10px;
+                font-size: 0.8rem;
+            }
+            .massage-service {
+                font-size: 0.75rem;
+            }
+            .massage-time {
+                font-size: 0.7rem;
+            }
+        }
+
         /* Schedule Tables */
         .schedule-wrapper {
             margin-top: 35px;
@@ -1039,109 +1098,6 @@
                         </div>
                     </div>
 
-                    <!-- Event 2: Apollo Fight Night (Main) -->
-                    <div class="event-card">
-                        <div class="event-image">
-                            <img src="events/apollo-fight-main.jpg" alt="Apollo Fight Night">
-                            <div class="event-date-badge">
-                                <span class="day">14</span>
-                                <span class="month">FEB</span>
-                            </div>
-                        </div>
-                        <div class="event-content">
-                            <h3 class="event-title" data-i18n="events.apollo.title">Apollo Fight Night</h3>
-                            <div class="event-meta">
-                                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>19:00 — 22:00</span>
-                                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>KAIF</span>
-                            </div>
-                            <div class="event-tags">
-                                <span class="event-tag">10 Fights</span>
-                                <span class="event-tag">Pro & Amateur</span>
-                                <span class="event-tag">Main Event</span>
-                                <span class="event-tag">Live Boxing</span>
-                                <span class="event-tag">KAIF x Apollo</span>
-                                <span class="event-tag">Tickets Available</span>
-                            </div>
-                            <a href="https://wa.me/66624805877?text=Hello!%20I%20want%20to%20buy%20tickets%20for%20Apollo%20Fight%20Night%20on%20February%2014" target="_blank" class="event-highlight">Palibin vs Sharov</a>
-                        </div>
-                    </div>
-
-                    <!-- Event 3: Apollo Fight Night — VIP Table for Four -->
-                    <div class="event-card">
-                        <div class="event-image">
-                            <img src="events/apollo-fight-vip-four.png" alt="VIP Table for Four">
-                            <div class="event-date-badge">
-                                <span class="day">14</span>
-                                <span class="month">FEB</span>
-                            </div>
-                        </div>
-                        <div class="event-content">
-                            <h3 class="event-title" data-i18n="events.vipfour.title">Apollo Fight Night — VIP Table for Four</h3>
-                            <div class="event-meta">
-                                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>19:00 — 22:00</span>
-                                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>KAIF</span>
-                            </div>
-                            <div class="event-tags">
-                                <span class="event-tag">4 Event Tickets</span>
-                                <span class="event-tag">Private Table</span>
-                                <span class="event-tag">Cheese Platter</span>
-                                <span class="event-tag">Fruit Platter</span>
-                                <span class="event-tag">Soft Drinks</span>
-                                <span class="event-tag">Bottle Included</span>
-                            </div>
-                            <a href="https://wa.me/66624805877?text=Hello!%20I%20want%20to%20book%20VIP%20Table%20for%20Four%20at%20Apollo%20Fight%20Night%20on%20February%2014" target="_blank" class="event-highlight">10,000 THB</a>
-                        </div>
-                    </div>
-
-                    <!-- Event 4: Apollo Fight Night — VIP Table for Two -->
-                    <div class="event-card">
-                        <div class="event-image">
-                            <img src="events/apollo-fight-vip-two.png" alt="VIP Table for Two">
-                            <div class="event-date-badge">
-                                <span class="day">14</span>
-                                <span class="month">FEB</span>
-                            </div>
-                        </div>
-                        <div class="event-content">
-                            <h3 class="event-title" data-i18n="events.viptwo.title">Apollo Fight Night — VIP Table for Two</h3>
-                            <div class="event-meta">
-                                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>19:00 — 22:00</span>
-                                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>KAIF</span>
-                            </div>
-                            <div class="event-tags">
-                                <span class="event-tag">2 Event Tickets</span>
-                                <span class="event-tag">Private Table</span>
-                                <span class="event-tag">Cheese Platter</span>
-                                <span class="event-tag">Fruit Platter</span>
-                                <span class="event-tag">Soft Drinks</span>
-                                <span class="event-tag">2 Cocktails</span>
-                            </div>
-                            <a href="https://wa.me/66624805877?text=Hello!%20I%20want%20to%20book%20VIP%20Table%20for%20Two%20at%20Apollo%20Fight%20Night%20on%20February%2014" target="_blank" class="event-highlight">4,000 THB</a>
-                        </div>
-                    </div>
-
-                    <!-- Event 5: Apollo Fight Night — Tickets -->
-                    <div class="event-card">
-                        <div class="event-image">
-                            <img src="events/apollo-fight-tickets.png" alt="Fight Night Tickets">
-                            <div class="event-date-badge">
-                                <span class="day">14</span>
-                                <span class="month">FEB</span>
-                            </div>
-                        </div>
-                        <div class="event-content">
-                            <h3 class="event-title" data-i18n="events.tickets.title">Apollo Fight Night — Tickets</h3>
-                            <div class="event-meta">
-                                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>19:00 — 22:00</span>
-                                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>KAIF</span>
-                            </div>
-                            <div class="event-tags">
-                                <span class="event-tag">Event Entry</span>
-                                <span class="event-tag">Access to All Fights</span>
-                            </div>
-                            <a href="https://wa.me/66624805877?text=Hello!%20I%20want%20to%20buy%20tickets%20for%20Apollo%20Fight%20Night%20on%20February%2014" target="_blank" class="event-highlight" data-i18n="events.tickets.highlight">From 600 THB</a>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
@@ -1165,6 +1121,12 @@
                     <span class="icon">🍸</span>
                     <h4 data-i18n="restaurant.bar">Bar Menu</h4>
                     <p data-i18n="restaurant.barDesc">View our drinks menu</p>
+                </a>
+
+                <a href="fiels/maslenitsa.pdf" class="menu-card" target="_blank">
+                    <span class="icon">🥞</span>
+                    <h4 data-i18n="restaurant.maslenitsa">Maslenitsa</h4>
+                    <p data-i18n="restaurant.maslenitsaDesc">Pancake menu 24 Feb — 2 Mar</p>
                 </a>
             </div>
         </section>
@@ -1647,6 +1609,84 @@
                 <img src="photo_2569-01-20 13.14.26.jpeg" alt="Individual Steam Baths">
                 <img src="photo_2569-01-20 13.01.38.jpeg" alt="Hammam Rituals">
             </div>
+
+            <!-- Massage Section -->
+            <div class="section-header" style="margin-top: 2rem;">
+                <h3 data-i18n="massage.title">Massage</h3>
+            </div>
+
+            <div class="massage-table">
+                <div class="massage-header">
+                    <div class="massage-service"></div>
+                    <div class="massage-time">30 min</div>
+                    <div class="massage-time">60 min</div>
+                    <div class="massage-time">90 min</div>
+                    <div class="massage-time">120 min</div>
+                </div>
+                <div class="massage-row">
+                    <div class="massage-service" data-i18n="massage.foot">Foot Massage</div>
+                    <div class="massage-price">—</div>
+                    <div class="massage-price">450</div>
+                    <div class="massage-price">700</div>
+                    <div class="massage-price">850</div>
+                </div>
+                <div class="massage-row">
+                    <div class="massage-service" data-i18n="massage.thai">Thai Massage</div>
+                    <div class="massage-price">—</div>
+                    <div class="massage-price">600</div>
+                    <div class="massage-price">750</div>
+                    <div class="massage-price">1 000</div>
+                </div>
+                <div class="massage-row">
+                    <div class="massage-service" data-i18n="massage.oil">Oil Massage</div>
+                    <div class="massage-price">—</div>
+                    <div class="massage-price">650</div>
+                    <div class="massage-price">800</div>
+                    <div class="massage-price">950</div>
+                </div>
+                <div class="massage-row">
+                    <div class="massage-service" data-i18n="massage.oilscrub">Oil Massage + Scrub</div>
+                    <div class="massage-price">—</div>
+                    <div class="massage-price">800</div>
+                    <div class="massage-price">950</div>
+                    <div class="massage-price">1 100</div>
+                </div>
+                <div class="massage-row">
+                    <div class="massage-service" data-i18n="massage.face">Face Massage</div>
+                    <div class="massage-price">—</div>
+                    <div class="massage-price">500</div>
+                    <div class="massage-price">650</div>
+                    <div class="massage-price">800</div>
+                </div>
+                <div class="massage-row">
+                    <div class="massage-service" data-i18n="massage.deepthai">Deep Thai Massage</div>
+                    <div class="massage-price">—</div>
+                    <div class="massage-price">800</div>
+                    <div class="massage-price">950</div>
+                    <div class="massage-price">1 100</div>
+                </div>
+                <div class="massage-row">
+                    <div class="massage-service" data-i18n="massage.sport">Sport Massage</div>
+                    <div class="massage-price">—</div>
+                    <div class="massage-price">800</div>
+                    <div class="massage-price">1 300</div>
+                    <div class="massage-price">—</div>
+                </div>
+                <div class="massage-row">
+                    <div class="massage-service" data-i18n="massage.health">Health Massage</div>
+                    <div class="massage-price">800</div>
+                    <div class="massage-price">1 600</div>
+                    <div class="massage-price">—</div>
+                    <div class="massage-price">—</div>
+                </div>
+                <div class="massage-row">
+                    <div class="massage-service" data-i18n="massage.scrub">Body Scrubbing (30 min)</div>
+                    <div class="massage-price">500</div>
+                    <div class="massage-price">—</div>
+                    <div class="massage-price">—</div>
+                    <div class="massage-price">—</div>
+                </div>
+            </div>
         </section>
 
         <div class="divider"></div>
@@ -1870,6 +1910,8 @@
                 'restaurant.menuDesc': 'View our food menu',
                 'restaurant.bar': 'Bar Menu',
                 'restaurant.barDesc': 'View our drinks menu',
+                'restaurant.maslenitsa': 'Maslenitsa',
+                'restaurant.maslenitsaDesc': 'Pancake menu 24 Feb — 2 Mar',
                 'daypass.title': 'Day Pass',
                 'daypass.fullday': 'Day Pass',
                 'daypass.includes': 'Gym, Pool, Steam Room, Russian Sauna, Collective Steaming, Japanese Pool, Aroma Ice Barrel, Unlimited Group Training (Fight Club & Motion)',
@@ -1905,6 +1947,16 @@
                 'group.title': 'Group Training',
                 'group.note': 'In addition to the subscription',
                 'spa.title': 'SPA & Steam Rituals',
+                'massage.title': 'Massage',
+                'massage.foot': 'Foot Massage',
+                'massage.thai': 'Thai Massage',
+                'massage.oil': 'Oil Massage',
+                'massage.oilscrub': 'Oil Massage + Scrub',
+                'massage.face': 'Face Massage',
+                'massage.deepthai': 'Deep Thai Massage',
+                'massage.sport': 'Sport Massage',
+                'massage.health': 'Health Massage',
+                'massage.scrub': 'Body Scrubbing (30 min)',
                 'schedule.title': 'Schedule',
                 'footer.note': '* To purchase a personal session package,<br>you need to own a Club Access / Club Access + / Club Access Sport',
                 'pt.trial': 'Trial Training',
@@ -1949,16 +2001,7 @@
                 'events.booknow': 'Book Now',
                 'events.poolparty.title': 'Pool Party',
                 'events.poolparty.highlight': '1+1 for Special Mocktails',
-                'events.poolparty.desc': 'Music, water, sunset, and mocktails — the perfect vibe to relax and move',
-                'events.apollo.title': 'Apollo Fight Night',
-                'events.apollo.desc': 'A real boxing night. Main event: Anton Palibin vs Vitaly Sharov. Two schools. Two camps.',
-                'events.vipfour.title': 'Apollo Fight Night — VIP Table for Four',
-                'events.vipfour.desc': 'The ultimate ringside experience for you and your group. KAIF x Apollo Gym presents an unforgettable fight night experience.',
-                'events.viptwo.title': 'Apollo Fight Night — VIP Table for Two',
-                'events.viptwo.desc': 'Perfect for couples or friends. Enjoy the fights with premium service and special cocktails.',
-                'events.tickets.title': 'Apollo Fight Night — Tickets',
-                'events.tickets.highlight': 'From 600 THB',
-                'events.tickets.desc': 'General Admission 1,000 THB • Club Member Ticket 600 THB. Special rate for active club members.'
+                'events.poolparty.desc': 'Music, water, sunset, and mocktails — the perfect vibe to relax and move'
             },
             ru: {
                 'tagline': 'Велнес и Фитнес Комплекс',
@@ -1975,6 +2018,8 @@
                 'restaurant.menuDesc': 'Посмотреть меню блюд',
                 'restaurant.bar': 'Барное меню',
                 'restaurant.barDesc': 'Посмотреть меню напитков',
+                'restaurant.maslenitsa': 'Масленица',
+                'restaurant.maslenitsaDesc': 'Меню блинов 24 фев — 2 мар',
                 'daypass.title': 'Разовый визит',
                 'daypass.fullday': 'Разовый визит',
                 'daypass.includes': 'Зал, Бассейн, Парная, Русская баня, Коллективное парение, Японский бассейн, Арома ледяная бочка, Безлимит групповых (Fight Club & Motion)',
@@ -2010,6 +2055,16 @@
                 'group.title': 'Групповые тренировки',
                 'group.note': 'Дополнительно к абонементу',
                 'spa.title': 'СПА и Банные ритуалы',
+                'massage.title': 'Массаж',
+                'massage.foot': 'Массаж стоп',
+                'massage.thai': 'Тайский массаж',
+                'massage.oil': 'Масляный массаж',
+                'massage.oilscrub': 'Масляный массаж + Скраб',
+                'massage.face': 'Массаж лица',
+                'massage.deepthai': 'Глубокий тайский массаж',
+                'massage.sport': 'Спортивный массаж',
+                'massage.health': 'Оздоровительный массаж',
+                'massage.scrub': 'Скрабирование тела (30 мин)',
                 'schedule.title': 'Расписание',
                 'footer.note': '* Для покупки пакета персональных тренировок,<br>необходим Club Access / Club Access + / Club Access Sport',
                 'pt.trial': 'Пробная тренировка',
@@ -2053,16 +2108,7 @@
                 'events.booknow': 'Забронировать',
                 'events.poolparty.title': 'Pool Party',
                 'events.poolparty.highlight': '1+1 на специальные коктейли',
-                'events.poolparty.desc': 'Музыка, вода, закат и мохито — идеальная атмосфера для отдыха',
-                'events.apollo.title': 'Apollo Fight Night',
-                'events.apollo.desc': 'Настоящий боксёрский вечер. Главный бой: Антон Палибин vs Виталий Шаров. Две школы. Два лагеря.',
-                'events.vipfour.title': 'Apollo Fight Night — VIP стол на четверых',
-                'events.vipfour.desc': 'Лучший опыт у ринга для вас и вашей компании. KAIF x Apollo Gym представляют незабываемый вечер боёв.',
-                'events.viptwo.title': 'Apollo Fight Night — VIP стол на двоих',
-                'events.viptwo.desc': 'Идеально для пар или друзей. Наслаждайтесь боями с премиум-сервисом и специальными коктейлями.',
-                'events.tickets.title': 'Apollo Fight Night — Билеты',
-                'events.tickets.highlight': 'От 600 THB',
-                'events.tickets.desc': 'Общий вход 1,000 THB • Билет для членов клуба 600 THB. Специальная цена для активных членов клуба.'
+                'events.poolparty.desc': 'Музыка, вода, закат и мохито — идеальная атмосфера для отдыха'
             },
             th: {
                 'tagline': 'ศูนย์สุขภาพและฟิตเนส',
@@ -2079,6 +2125,8 @@
                 'restaurant.menuDesc': 'ดูเมนูอาหาร',
                 'restaurant.bar': 'เมนูเครื่องดื่ม',
                 'restaurant.barDesc': 'ดูเมนูเครื่องดื่ม',
+                'restaurant.maslenitsa': 'Maslenitsa',
+                'restaurant.maslenitsaDesc': 'เมนูแพนเค้ก 24 ก.พ. — 2 มี.ค.',
                 'daypass.title': 'เดย์พาส',
                 'daypass.fullday': 'เดย์พาส',
                 'daypass.includes': 'ยิม, สระว่ายน้ำ, ห้องอบไอน้ำ, ซาวน่ารัสเซีย, อบไอน้ำรวม, สระญี่ปุ่น, ถังน้ำแข็งอโรมา, เทรนนิ่งกลุ่มไม่จำกัด (Fight Club & Motion)',
@@ -2114,6 +2162,16 @@
                 'group.title': 'เทรนนิ่งกลุ่ม',
                 'group.note': 'นอกเหนือจากสมาชิก',
                 'spa.title': 'สปาและซาวน่า',
+                'massage.title': 'นวด',
+                'massage.foot': 'นวดเท้า',
+                'massage.thai': 'นวดแผนไทย',
+                'massage.oil': 'นวดน้ำมัน',
+                'massage.oilscrub': 'นวดน้ำมัน + สครับ',
+                'massage.face': 'นวดหน้า',
+                'massage.deepthai': 'นวดแผนไทยแบบลึก',
+                'massage.sport': 'นวดสปอร์ต',
+                'massage.health': 'นวดเพื่อสุขภาพ',
+                'massage.scrub': 'สครับผิวกาย (30 นาที)',
                 'schedule.title': 'ตารางเวลา',
                 'footer.note': '* สำหรับซื้อแพ็คเกจเทรนนิ่งส่วนตัว,<br>ต้องมี Club Access / Club Access + / Club Access Sport',
                 'pt.trial': 'เทรนนิ่งทดลอง',
@@ -2157,16 +2215,7 @@
                 'events.booknow': 'จองเลย',
                 'events.poolparty.title': 'Pool Party',
                 'events.poolparty.highlight': '1+1 สำหรับม็อคเทลพิเศษ',
-                'events.poolparty.desc': 'ดนตรี น้ำ พระอาทิตย์ตก และม็อคเทล — บรรยากาศที่สมบูรณ์แบบเพื่อผ่อนคลาย',
-                'events.apollo.title': 'Apollo Fight Night',
-                'events.apollo.desc': 'คืนมวยจริง การแข่งขันหลัก: Anton Palibin vs Vitaly Sharov สองโรงเรียน สองค่าย',
-                'events.vipfour.title': 'Apollo Fight Night — โต๊ะ VIP สำหรับ 4 คน',
-                'events.vipfour.desc': 'ประสบการณ์ริงไซด์สุดพิเศษสำหรับคุณและกลุ่มของคุณ KAIF x Apollo Gym',
-                'events.viptwo.title': 'Apollo Fight Night — โต๊ะ VIP สำหรับ 2 คน',
-                'events.viptwo.desc': 'เหมาะสำหรับคู่รักหรือเพื่อน เพลิดเพลินกับการแข่งขันพร้อมบริการพรีเมียม',
-                'events.tickets.title': 'Apollo Fight Night — บัตรเข้าชม',
-                'events.tickets.highlight': 'เริ่มต้น 600 THB',
-                'events.tickets.desc': 'บัตรทั่วไป 1,000 THB • บัตรสมาชิกคลับ 600 THB ราคาพิเศษสำหรับสมาชิก'
+                'events.poolparty.desc': 'ดนตรี น้ำ พระอาทิตย์ตก และม็อคเทล — บรรยากาศที่สมบูรณ์แบบเพื่อผ่อนคลาย'
             }
         };
 
